@@ -1,8 +1,6 @@
 from functions import *
 
-# cep = input("Digite o seu cep: ")
-
-cep = "60762665"
+cep = input("Digite o seu cep: ")
 
 busca = searchCode(cep)
 

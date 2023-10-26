@@ -1,7 +1,7 @@
-import requests
+from requests import get
 
 def searchCode(cep):
-    request = requests.get(f"https://cep.awesomeapi.com.br/json/{cep}").json()
+    request = get(f"https://cep.awesomeapi.com.br/json/{cep}").json()
 
     if "message" in request:
         return "Cep invalido!"
