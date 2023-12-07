@@ -1,31 +1,37 @@
-from tkinter import *
 from customtkinter import *
 from functions import searchCep
 
 def print_cep():
+
+    clear()
+
     cep = searchCep(cep_input.get())
-    if cep == "Cep invalido!":
-        text['text'] = cep
-    else:
+    try:
         
-        text['text'] = "Informações"
-        text_cep['text'] = "Cep: {}".format(cep["Cep"])
-        text_rua['text'] = "Rua: {}".format(cep["Rua"])
-        text_bairro['text'] = "Bairro: {}".format(cep["Bairro"])
-        text_cidade['text'] = "Cidade: {}".format(cep["Cidade"])
-        text_ddd['text'] = "DDD: {}".format(cep["DDD"])
+        text.configure(text =  "Informações", pady = 15)
+        text_cep.configure(text =  "Cep: {}".format(cep["Cep"]))
+        text_rua.configure(text =  "Rua: {}".format(cep["Rua"]))
+        text_bairro.configure(text =  "Bairro: {}".format(cep["Bairro"]))
+        text_cidade.configure(text =  "Cidade: {}".format(cep["Cidade"]))
+        text_ddd.configure(text = "DDD: {}".format(cep["DDD"]))
+    
+    except:    
+        text.configure(text = cep, pady = 20);
     
 def clear():
-    text['text'] = ""
-    text_cep['text'] = ""
-    text_rua['text'] = ""
-    text_bairro['text'] = ""
-    text_cidade['text'] = ""
-    text_ddd['text'] = ""
+    text.configure(text = "")
+    text_cep.configure(text = "")
+    text_rua.configure(text = "")
+    text_bairro.configure(text = "")
+    text_cidade.configure(text = "")
+    text_ddd.configure(text = "")
     
 tela = CTk()
-tela.geometry("400x350")
 tela.title("Buscar Cep")
+
+tela.geometry("300x400")
+tela.resizable(width=False, height=False)
+tela._set_appearance_mode("dark")
 
 text_orientation = CTkLabel(tela, text = "Buscar Cep")
 text_orientation.pack(padx = 10, pady = 5)
@@ -39,28 +45,22 @@ button_search_cep.pack(padx = 10, pady = 10)
 button_clear = CTkButton(tela, text = "Clear", command=clear)
 button_clear.pack()
 
-text = Label(tela, text = "", fg = "white")
-text.pack(pady = 20)
-text['bg'] = tela['background']
+text = CTkLabel(tela, text = "")
+text.pack(pady = 15)
 
-text_cep = Label(tela, text = "", fg = "white")
+text_cep = CTkLabel(tela, text = "")
 text_cep.pack()
-text_cep["bg"] = tela["background"]
 
-text_rua = Label(tela, text = "", fg = "white")
+text_rua = CTkLabel(tela, text = "")
 text_rua.pack()
-text_rua["bg"] = tela["background"]
 
-text_bairro = Label(tela, text = "", fg = "white")
+text_bairro = CTkLabel(tela, text = "")
 text_bairro.pack()
-text_bairro["bg"] = tela["background"]
 
-text_cidade = Label(tela, text = "", fg = "white")
+text_cidade = CTkLabel(tela, text = "")
 text_cidade.pack()
-text_cidade["bg"] = tela["background"]
 
-text_ddd = Label(tela, text = "", fg = "white")
+text_ddd = CTkLabel(tela, text = "")
 text_ddd.pack(padx = 50)
-text_ddd["bg"] = tela["background"]
 
 tela.mainloop()

@@ -1,12 +1,12 @@
 from requests import get
 
 def searchCep(cep):
-    request = get(f"https://cep.awesomeapi.com.br/json/{cep}").json()
 
-    if "message" in request:
-        return "Cep invalido!"
-    else:
-        
+    try:
+        request = get(f"https://cep.awesomeapi.com.br/json/{cep}").json()
+
+        print(request)
+
         info_cep = {
             "Cep": request['cep'],
             request['address_type']: request['address_name'] ,
@@ -15,3 +15,10 @@ def searchCep(cep):
             "DDD": request['ddd']
         }
         return info_cep
+   
+    except:
+        return "Cep ínvalido!"
+    
+if __name__ == "__main__":
+    pass
+    
