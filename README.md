@@ -1,47 +1,43 @@
-# Busca CEP App
+# Buscar CEP
+Este é um simples programa em Python que busca informações de um CEP utilizando a biblioteca customtkinter para a interface gráfica personalizada.
 
-Este é um aplicativo simples de busca de CEP desenvolvido em Python usando a biblioteca Tkinter. Ele permite que o usuário insira um CEP e obtenha informações sobre o endereço correspondente.
+## Funcionalidades
 
-## Como Executar o Aplicativo:
+- Busca e exibe informações de CEP como Rua, Bairro, Cidade e DDD.
 
-1. **Pré-requisitos:**
-   - Certifique-se de ter o Python instalado em seu sistema.
-   - Instale as dependências usando o seguinte comando:
-     ```
-     pip install customtkinter
-     ```
+## Requisitos
 
-2. **Execução:**
-   - Execute o script Python `busca_cep.py`.
+- Python 3.x
+- Bibliotecas customtkinter e functions
 
-## Funcionalidades:
+## Instalação
 
-- **Busca de CEP:**
-  - Insira o CEP desejado no campo de entrada.
-  - Clique no botão "Search" para obter informações sobre o CEP.
 
-- **Limpar Resultados:**
-  - Clique no botão "Clear" para limpar as informações exibidas.
+Para instalar as dependências, execute o seguinte comando:
 
-## Estrutura do Código:
+```bash
+pip install -r requirements.txt
+```
 
-- **Módulos:**
-  - O código é dividido em módulos para facilitar a leitura e manutenção.
-  - Módulos incluem `customtkinter` para elementos personalizados do Tkinter e `functions` para a função de busca de CEP.
+# Como usar
 
-- **Função de Busca de CEP:**
-  - A função `searchCep` no módulo `functions` realiza a busca de CEP e retorna as informações.
+1. Clone o repositório:
+```bash
+git clone https://github.com/felipeclarindo/buscar-cep
+```
+2. Navegue ate o diretorio
+```bash
+cd buscar-cep
+```
+3. Execute o programa:
+```bash
+python main.py
+```
+4. Digite o CEP desejado e clique em "Search" para buscar informações.
 
-- **Interface Gráfica:**
-  - Utiliza a biblioteca Tkinter para criar uma interface simples.
-  - Elementos como entrada (`Entry`), botões (`Button`), e rótulos (`Label`) são personalizados com a biblioteca `customtkinter`.
+## Lincença
+Este projeto está licenciado sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
 
-## Contribuições e Problemas Conhecidos:
+---
 
-- Contribuições são bem-vindas. Se encontrar problemas ou tiver sugestões de melhoria, abra uma *issue* neste repositório.
-
-## Licença:
-
-Este projeto está sob a licença [MIT](LICENSE).
-
-Desenvolvido por Felipe.
+Desenvolvido por [Felipe Clarindo](https://github.com/felipeclarindo).
