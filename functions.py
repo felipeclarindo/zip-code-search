@@ -2,23 +2,39 @@
 from requests import get
 
 # Define a função searchCep que recebe um CEP como argumento
-def searchCep(cep):
+def searchCep(cep:int)->dict:
     try:
-        # Faz uma requisição GET para a API de CEP com o CEP fornecido
-        request = get(f"https://cep.awesomeapi.com.br/json/{cep}").json()
+        # Verifica se o CEP tem 8 dígitos e contém apenas números
+        if len(cep) == 8 and cep.isdigit():
+            # Monta a URL com o CEP fornecido
+            url = f"https://cep.awesomeapi.com.br/json/{cep}"
+
+            # Faz a requisição GET para a API de CEP e converte a resposta para JSON
+            request = get(url).json()
+
+            # Extrai as informações relevantes da resposta da API
+            info_cep = {
+                "Cep": request['cep'],
+                request['address_type']: request['address_name'],
+                "Bairro": request['district'],
+                "Cidade": request['city'],
+                "DDD": request['ddd']
+            }
         
-        # Extrai as informações relevantes da resposta da API
-        info_cep = {
-            "Cep": request['cep'],  # Obtém o CEP
-            request['address_type']: request['address_name'],  # Obtém o tipo e nome do endereço (ex: Rua, Avenida)
-            "Bairro": request['district'],  # Obtém o bairro
-            "Cidade": request['city'],  # Obtém a cidade
-            "DDD": request['ddd']  # Obtém o DDD da cidade
-        }
-        return info_cep  # Retorna as informações do CEP em um dicionário
+            return info_cep
+
+        else:
+            # Levanta um erro se o CEP não tiver 8 dígitos ou não contiver apenas números
+            raise ValueError("Cep Invalido. \nDigite um CEP com 8 digitos numéricos!")
     
-    except:
-        return "Cep ínvalido!"  # Retorna uma mensagem de erro se o CEP for inválido
+    except ValueError as ve:
+        # Captura e retorna a mensagem de erro
+        return str(ve) 
+
+    except Exception as e:
+        # Captura e retorna qualquer outro tipo de erro
+        return f"Error {e}"
+    
 
 # Verifica se o script está sendo executado diretamente
 if __name__ == "__main__":
