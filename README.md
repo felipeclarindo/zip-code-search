@@ -35,9 +35,14 @@ python main.py
 ```
 4. Digite o CEP desejado e clique em "Search" para buscar informações.
 
-## Lincença
-Este projeto está licenciado sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
+## Autor
 
----
+Desenvolvido por **Felipe Clarindo**.  
+  - [LinkedIn](https://www.linkedin.com/in/felipe-clarindo-934578289/)  
+  - [Instagram](https://www.instagram.com/lipethegoat)  
+  - [GitHub](https://github.com/felipeclarindo)  
 
-Desenvolvido por [Felipe Clarindo](https://github.com/felipeclarindo).
+
+## Licença
+
+Este projeto está licenciado sob a [GNU Affero License](https://www.gnu.org/licenses/agpl-3.0.html).
