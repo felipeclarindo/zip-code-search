@@ -23,7 +23,7 @@ pip install -r requirements.txt
 
 1. Clone o repositório:
 ```bash
-git clone https://github.com/felipeclarindo/buscar-cep
+git clone https://github.com/felipeclarindo/buscar-cep.git
 ```
 2. Navegue ate o diretorio
 ```bash
