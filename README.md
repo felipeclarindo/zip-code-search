@@ -35,6 +35,10 @@ python main.py
 ```
 4. Digite o CEP desejado e clique em "Search" para buscar informações.
 
+## Contribuições
+
+Contribuições são bem-vindas! Se você encontrar algum problema ou tiver sugestões de melhorias, sinta-se à vontade para abrir uma issue ou enviar um pull request.
+
 ## Autor
 
 Desenvolvido por **Felipe Clarindo**.  
