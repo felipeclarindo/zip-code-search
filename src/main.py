@@ -1,9 +1,6 @@
-# Importa a biblioteca customtkinter para a interface gráfica personalizada
-from customtkinter import *
-# Importa a função searchCep do módulo functions para buscar informações de CEP
-from functions import searchCep
-# Importa a função sleep da biblioteca time para adicionar um atraso visual
-from time import sleep
+from customtkinter import * # Importa a biblioteca customtkinter para a interface gráfica personalizada
+from modules.search_cep import search_cep # Importa a função searchCep do módulo functions para buscar informações de CEP
+from time import sleep # Importa a função sleep da biblioteca time para adicionar um atraso visual
 
 # Função para limpar os campos de texto da interface
 def clear():
@@ -25,7 +22,7 @@ def print_cep():
 
     sleep(1)  # Aguarda 1 segundo para simular um carregamento
 
-    cep = searchCep(cep_input.get())  # Busca as informações do CEP
+    cep = search_cep(cep_input.get())  # Busca as informações do CEP
 
     if isinstance(cep, dict):
         # Se as informações do CEP foram obtidas com sucesso, exibe os dados nos campos de texto
