@@ -1,4 +1,4 @@
-from src.modules.search_cep import search_cep # Importando função de buscar cep do pacote modules
+from app.modules.search_cep import search_cep # Importando função de buscar cep do pacote modules
 from unittest.mock import patch, Mock
 
 def test_valid_cep():
