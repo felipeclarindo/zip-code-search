@@ -11,7 +11,7 @@ def search_cep(cep: int) -> dict:
     Returns:
         dict: Um dicionário com as informações do CEP, incluindo os campos:
             - "Cep": O CEP formatado.
-            - Tipo de logradouro (ex: "Rua" ou "Avenida"): O nome da rua.
+            - Tipo de logradouro (ex: "Rua" ou "Avenida"): O nome da rua ou avenida.
             - "Bairro": O bairro correspondente ao CEP.
             - "Cidade": A cidade correspondente ao CEP.
             - "DDD": O código DDD da área do CEP.
@@ -31,11 +31,11 @@ def search_cep(cep: int) -> dict:
 
                 # Extraindo as informações relevantes da resposta da API
                 info_cep = {
-                    "Cep": request["cep"],
-                    request["address_type"]: request["address_name"],
-                    "Bairro": request["district"],
-                    "Cidade": request["city"],
-                    "DDD": request["ddd"],
+                    "cep": request["cep"],
+                    request["address_type"].lower(): request["address_name"],
+                    "bairro": request["district"],
+                    "cidade": request["city"],
+                    "ddd": request["ddd"],
                 }
 
                 return info_cep
