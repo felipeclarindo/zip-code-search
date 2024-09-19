@@ -2,6 +2,7 @@ from customtkinter import CTk, CTkLabel, CTkButton, CTkEntry
 from .modules.search_cep import (
     search_cep,
 )
+from .modules.cep_gui import CepGUI
 from time import sleep
 
 
@@ -13,7 +14,7 @@ class App(CTk):
 
     def __init__(self) -> None:
         """
-        Inicializa a interface gráfica e define os widgets da aplicação.
+        Inicializa a interface gráfica, configura e define os widgets da aplicação.
         """
         super(App, self).__init__()
 
@@ -25,7 +26,7 @@ class App(CTk):
         Configurações da interface gráfica (titulo, resoluçãoo e etc)
         """
         self.title("Buscar Cep")
-        self.geometry("300x350")
+        self.geometry("250x230")
         self.resizable(width=False, height=False)
         self._set_appearance_mode("dark")
 
@@ -33,19 +34,18 @@ class App(CTk):
         """
         Cria e posiciona os widgets (elementos da interface) na janela.
         """
-        self.text_orientation = CTkLabel(self, text="Buscar Cep")
-        self.text_orientation.pack(padx=10, pady=5)
+        self.text_orientation = CTkLabel(self, text="Buscar Cep", bg_color=self.cget("bg"), text_color="white")
+        self.text_orientation.pack(pady=18)
 
-        self.cep_input = CTkEntry(self)
-        self.cep_input.pack(padx=10, pady=5)
+        self.cep_input = CTkEntry(self, bg_color=self.cget("bg"), placeholder_text="Digite o CEP")
+        self.cep_input.pack()
+        
+        self.text_result = CTkLabel(self, text="", bg_color=self.cget("bg"), text_color="white")
 
-        self.button_search_cep = CTkButton(self, text="Search", command=self.print_cep)
-        self.button_search_cep.pack(padx=10, pady=5)
+        self.button_search_cep = CTkButton(self, text="Search", command=self.print_cep, bg_color=self.cget("bg"), width=80)
+        self.button_search_cep.pack(pady=15)
 
-        self.button_clear = CTkButton(self, text="Clear", command=self.clear)
-        self.button_clear.pack(pady=5)
-
-        self.loading = CTkLabel(self, text="")
+        self.loading = CTkLabel(self, text="", bg_color=self.cget("bg"), text_color="white")
         self.loading.pack()
 
     def print_cep(self) -> None:
@@ -57,7 +57,7 @@ class App(CTk):
 
         # Exibe mensagem de carregamento durante a busca
         self.loading.configure(text="Carregando....")
-        self.loading.place(x=115, y=165)
+        self.loading.place(x=85, y=155)
         self.update()
 
         sleep(1)
@@ -66,21 +66,15 @@ class App(CTk):
 
         # Verifica se o resultado é um dicionário válido com as informações do CEP
         if isinstance(cep_data, dict):
-            self.text_cep.configure(text=f"Cep: {cep_data['Cep']}")
-            self.text_rua.configure(text=f"Rua: {cep_data['Rua']}")
-            self.text_bairro.configure(text=f"Bairro: {cep_data['Bairro']}")
-            self.text_cidade.configure(text=f"Cidade: {cep_data['Cidade']}")
-            self.text_ddd.configure(text=f"DDD: {cep_data['DDD']}")
-
-            self.text_error.place_forget()
-            self.text_cep.pack()
-            self.text_rua.pack()
-            self.text_bairro.pack()
-            self.text_cidade.pack()
-            self.text_ddd.pack()
+            interface_cep = CepGUI(cep_data)
+            interface_cep.mainloop()
+            self.text_result = CTkLabel(self, text=f"Cep {self.cep_input.get()} encontrado.")
         else:
-            self.text_error.configure(text=cep_data, pady=4)
-            self.text_error.pack(pady=18)
-
+            self.text_result.configure(text=cep_data, pady=4)
+        
+        self.text_result.pack(pady=5)
         self.loading.place_forget()
         self.update()
+        
+    def clear(self) -> None:
+        self.text_result.configure(text="")
