@@ -1,6 +1,6 @@
-import customtkinter as ctk
+from customtkinter import CTk, CTkLabel, CTkButton
 
-class CepGUI(ctk.CTk):
+class CepGUI(CTk):
     """
     Classe principal da aplicação para busca de CEP.
     Herda a classe CTk para criar uma interface gráfica personalizada.
@@ -36,8 +36,7 @@ class CepGUI(ctk.CTk):
         self.title("Informações do Cep")
         self.geometry("300x300")
         self.resizable(False, False)
-        ctk.set_appearance_mode("dark")  # Definindo o modo escuro
-        ctk.set_default_color_theme("dark-blue")  # Definindo o tema de cores
+        self._set_appearance_mode("dark")
         
     def create_widgets(self) -> None:
         """
@@ -47,33 +46,23 @@ class CepGUI(ctk.CTk):
         # Usando a cor de fundo da janela para os labels
         self.bg_color = self.cget("bg")
 
-        title_label = ctk.CTkLabel(self, text="Informações do Cep", font=("Arial", 17), bg_color=self.cget("bg"))
+        title_label = CTkLabel(self, text="Informações do Cep", font=("Arial", 17), bg_color=self.cget("bg"), text_color="white")
         title_label.pack(pady=15)
 
-        cep_label = ctk.CTkLabel(self, text=f"CEP: {self.informacoes_cep.get('cep')}", bg_color=self.cget("bg"))
+        cep_label = CTkLabel(self, text=f"CEP: {self.informacoes_cep.get('cep')}", bg_color=self.cget("bg"), text_color="white")
         cep_label.pack()
 
-        rua_label = ctk.CTkLabel(self, text=f"Rua: {self.informacoes_cep.get('rua')}", bg_color=self.cget("bg"))
+        rua_label = CTkLabel(self, text=f"Rua: {self.informacoes_cep.get('rua')}", bg_color=self.cget("bg"), text_color="white")
         rua_label.pack()
 
-        bairro_label = ctk.CTkLabel(self, text=f"Bairro: {self.informacoes_cep.get('bairro')}", bg_color=self.cget("bg"))
+        bairro_label = CTkLabel(self, text=f"Bairro: {self.informacoes_cep.get('bairro')}", bg_color=self.cget("bg"), text_color="white")
         bairro_label.pack()
 
-        cidade_label = ctk.CTkLabel(self, text=f"Cidade: {self.informacoes_cep.get('cidade')}", bg_color=self.cget("bg"))
+        cidade_label = CTkLabel(self, text=f"Cidade: {self.informacoes_cep.get('cidade')}", bg_color=self.cget("bg"), text_color="white")
         cidade_label.pack()
 
-        ddd_label = ctk.CTkLabel(self, text=f"DDD: {self.informacoes_cep.get('ddd')}", bg_color=self.cget("bg"))
+        ddd_label = CTkLabel(self, text=f"DDD: {self.informacoes_cep.get('ddd')}", bg_color=self.cget("bg"), text_color="white")
         ddd_label.pack()
 
-        close_button = ctk.CTkButton(self, text="Fechar", command=self.destroy)
+        close_button = CTkButton(self, text="Fechar", command=self.destroy, bg_color=self.cget("bg"))
         close_button.pack(pady=20)
-
-if __name__ == "__main__":
-    app = CepGUI({
-        "cep": "124",
-        "rua": "Rua 3",
-        "bairro": "Bela Vista",
-        "cidade": "São Paulo",
-        "ddd": "011"
-    })
-    app.mainloop()
