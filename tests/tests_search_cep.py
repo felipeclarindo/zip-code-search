@@ -14,9 +14,9 @@ def test_empty_cep():
 def test_invalid_cep_length():
     invalid_cep = "123"
     result = search_cep(invalid_cep)
-    assert result == "Cep Invalido. \nDigite um CEP com 8 digitos numéricos!"
+    assert result == "Cep Invalido,\ninforme um cep com 8 digitos numéricos!"
     
 def test_invalid_cep_non_numeric():
     invalid_cep = "12345abcdef"
     result = search_cep(invalid_cep)
-    assert result == "Cep Invalido. \nDigite um CEP com 8 digitos numéricos!"
+    assert result == "Cep Invalido,\ninforme um cep com 8 digitos numéricos!"
