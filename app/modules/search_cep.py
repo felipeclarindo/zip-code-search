@@ -27,7 +27,7 @@ def search_cep(cep: int) -> dict:
             if len(cep) == 8 and cep.isdigit():
                 url = f"https://cep.awesomeapi.com.br/json/{cep}"
 
-                request = get(url).json()
+                request = get(url, verify=False).json()
 
                 # Extraindo as informações relevantes da resposta da API
                 info_cep = {
@@ -42,10 +42,10 @@ def search_cep(cep: int) -> dict:
 
             else:
                 raise ValueError(
-                    "Cep Invalido. \nDigite um CEP com 8 digitos numéricos!"
+                    "Cep Invalido,\ninforme um cep com 8 digitos numéricos!"
                 )
         else:
-            raise ValueError("O Cep não pode ser vazio!")
+            raise ValueError("O cep não pode ser vazio!")
 
     except ValueError as v:
         return str(v)
