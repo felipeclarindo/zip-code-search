@@ -8,13 +8,15 @@ from time import sleep
 
 class App(CTk):
     """
-    Classe principal da aplicação para busca de CEP.
-    Herda a classe CTk para criar uma interface gráfica personalizada.
+    Main class for the Cep Finder application.
+
+    Args:
+        CTk (CustomTkInter): A base class for creating custom themed tkinter applications.
     """
 
     def __init__(self) -> None:
         """
-        Inicializa a interface gráfica, configura e define os widgets da aplicação.
+        Initializes the application window and sets up the user interface.
         """
         super(App, self).__init__()
 
@@ -23,7 +25,7 @@ class App(CTk):
 
     def configure_screen(self) -> None:
         """
-        Configurações da interface gráfica (titulo, resoluçãoo e etc)
+        Configurations of the main application window (title, resolution and etc).
         """
         self.title("Cep Finder")
         self.geometry("240x210")
@@ -32,26 +34,39 @@ class App(CTk):
 
     def create_widgets(self) -> None:
         """
-        Cria e posiciona os widgets (elementos da interface) na janela.
+        Create and position the widgets (interface elements) in the window.
         """
-        self.text_orientation = CTkLabel(self, text="Buscar Cep", bg_color=self.cget("bg"), text_color="white")
+        self.text_orientation = CTkLabel(
+            self, text="Buscar Cep", bg_color=self.cget("bg"), text_color="white"
+        )
         self.text_orientation.pack(pady=13)
 
-        self.cep_input = CTkEntry(self, bg_color=self.cget("bg"), placeholder_text="Digite o cep")
+        self.cep_input = CTkEntry(
+            self, bg_color=self.cget("bg"), placeholder_text="Digite o cep"
+        )
         self.cep_input.pack()
 
-        self.button_search_cep = CTkButton(self, text="Search", command=self.print_cep, bg_color=self.cget("bg"), width=80)
+        self.button_search_cep = CTkButton(
+            self,
+            text="Search",
+            command=self.print_cep,
+            bg_color=self.cget("bg"),
+            width=80,
+        )
         self.button_search_cep.pack(pady=12)
 
-        self.text_result = CTkLabel(self, text="", bg_color=self.cget("bg"), text_color="white")
+        self.text_result = CTkLabel(
+            self, text="", bg_color=self.cget("bg"), text_color="white"
+        )
 
-        self.loading = CTkLabel(self, text="", bg_color=self.cget("bg"), text_color="white")
+        self.loading = CTkLabel(
+            self, text="", bg_color=self.cget("bg"), text_color="white"
+        )
         self.loading.pack()
 
     def print_cep(self) -> None:
         """
-        Busca e exibe as informações do CEP inserido pelo usuário. Se o CEP for inválido,
-        exibe uma mensagem de erro.
+        Search and show the information of the entered CEP by the user. If the CEP is invalid, raises an error message.
         """
         self.clear()
 
@@ -64,7 +79,7 @@ class App(CTk):
 
         cep_data = search_cep(self.cep_input.get())
 
-        # Verifica se o resultado é um dicionário válido com as informações do CEP
+        # Validate return
         if isinstance(cep_data, dict):
             self.text_result.configure(text=f"Cep encontrado com sucesso.")
             self.text_result.pack(pady=10)
@@ -75,10 +90,13 @@ class App(CTk):
             self.cep_gui.mainloop()
         else:
             self.text_result.configure(text=cep_data)
-        
+
         self.text_result.pack(pady=10)
         self.loading.place_forget()
         self.update()
-        
+
     def clear(self) -> None:
+        """
+        Clear the result text.
+        """
         self.text_result.configure(text="")

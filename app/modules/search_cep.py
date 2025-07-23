@@ -3,24 +3,24 @@ from requests import get
 
 def search_cep(cep: int) -> dict:
     """
-    Busca informações de endereço de um CEP usando a API AwesomeAPI.
+    Searches for the information of a given CEP (Postal Code) using an external API.
 
     Args:
-        cep (int): O CEP a ser buscado. Deve ter exatamente 8 dígitos numéricos.
+        cep (int): The CEP to be searched. Must have exactly 8 numeric digits.
 
     Returns:
-        dict: Um dicionário com as informações do CEP, incluindo os campos:
-            - "Cep": O CEP formatado.
-            - Tipo de logradouro (ex: "Rua" ou "Avenida"): O nome da rua ou avenida.
-            - "Bairro": O bairro correspondente ao CEP.
-            - "Cidade": A cidade correspondente ao CEP.
-            - "DDD": O código DDD da área do CEP.
+        dict: A dictionary with the information of the CEP, including the fields:
+            - "Cep": The formatted CEP.
+            - Address type (e.g., "Rua" or "Avenida"): The name of the street or avenue.
+            - "Bairro": The neighborhood associated with the CEP.
+            - "Cidade": The city corresponding to the CEP.
+            - "DDD": The DDD associated with the number.
 
     Raises:
-        ValueError: Se o CEP não tiver 8 dígitos numéricos ou estiver vazio.
-        Exception: Para outros erros durante a solicitação à API.
+        ValueError: If the CEP does not have 8 numeric digits or is empty.
+        Exception: For other errors during the API request.
 
-    Se ocorrer um erro, a função retorna uma string com a mensagem de erro.
+    If an error occurs, the function returns a string with the error message.
     """
     try:
         if cep:
@@ -29,7 +29,7 @@ def search_cep(cep: int) -> dict:
 
                 request = get(url, verify=False).json()
 
-                # Extraindo as informações relevantes da resposta da API
+                # Extracting relevant information from the API response
                 info_cep = {
                     "cep": request["cep"],
                     request["address_type"].lower(): request["address_name"],
