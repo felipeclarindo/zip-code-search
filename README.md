@@ -1,52 +1,50 @@
-# Buscar CEP
-Este é um simples programa em Python que busca informações de um CEP utilizando a biblioteca customtkinter para a interface gráfica personalizada.
+🌍 [Leia em Português](README.pt-BR.md)
 
-## Funcionalidades
+# Zip Code Search
 
-- Busca e exibe informações de CEP como Rua, Bairro, Cidade e DDD.
+This is a simple Python program that searches for information of a ZIP code using the customtkinter library for the customized graphical interface.
 
-## Requisitos
+## Steps to install and run
 
-- Python 3.x
-- Bibliotecas customtkinter e functions
+1. Clone the repository:
 
-## Instalação
+```bash
+git clone https://github.com/felipeclarindo/zip-code-search.git
+```
 
+2. Enter directory:
 
-Para instalar as dependências, execute o seguinte comando:
+```bash
+cd zip-code-search
+```
+
+3. Install dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-# Como usar
+4. Run the program:
 
-1. Clone o repositório:
 ```bash
-git clone https://github.com/felipeclarindo/buscar-cep.git
+python src/main.py
 ```
-2. Navegue ate o diretorio
-```bash
-cd buscar-cep/src
-```
-3. Execute o programa:
-```bash
-python main.py
-```
-4. Digite o CEP desejado e clique em "Search" para buscar informações.
 
-## Contribuições
-
-Contribuições são bem-vindas! Se você encontrar algum problema ou tiver sugestões de melhorias, sinta-se à vontade para abrir uma issue ou enviar um pull request.
-
-## Autor
-
-Desenvolvido por **Felipe Clarindo**.  
-  - [LinkedIn](https://www.linkedin.com/in/felipe-clarindo-934578289/)  
-  - [Instagram](https://www.instagram.com/lipethegoat)  
-  - [GitHub](https://github.com/felipeclarindo)  
+5. Enter the desired ZIP code and click on "Search" to find information.
 
 
-## Licença
+## Contribution
 
-Este projeto está licenciado sob a [GNU Affero License](https://www.gnu.org/licenses/agpl-3.0.html).
+Contributions are welcome! If you have suggestions for improvements, feel free to open an issue or submit a pull request.
+
+## Author
+
+**Felipe Clarindo**
+
+- [Linkedin](https://www.linkedin.com/in/felipeclarindo)
+- [Instagram](https://www.instagram.com/lipethecoder)
+- [GitHub](https://github.com/felipeclarindo)
+
+## License
+
+This project is licensed under the [GNU Affero License](https://www.gnu.org/licenses/agpl-3.0.html).
